@@ -27,7 +27,7 @@ export default function ProjectCard({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, delay: index * 0.1 }}
-      className="group relative"
+      className="group relative"  
       data-cursor
     >
       <div

@@ -110,9 +110,9 @@ export default function Hero() {
   const p = panels[idx];
 
   return (
-    <section className="relative min-h-screen" id="home">
-      <div className="relative min-h-screen">
-        <div className="relative min-h-screen overflow-hidden">
+    <section className="relative " id="home">
+      <div className="relative">
+        <div className="relative  overflow-hidden">
           {/* Background */}
           <div
             className="absolute inset-0 radial-glow pointer-events-none"
@@ -125,7 +125,7 @@ export default function Hero() {
           />
 
           {/* Hero Content */}
-          <motion.div className="relative z-10 min-h-screen flex items-center">
+          <motion.div className="relative z-10  flex items-center">
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
               <AnimatePresence mode="wait">
                 <motion.div

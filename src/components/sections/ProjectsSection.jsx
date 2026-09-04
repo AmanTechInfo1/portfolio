@@ -20,7 +20,11 @@ export default function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mt-14 lg:mt-20 space-y-8 lg:space-y-12" style={{display:'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap:'30px'}}>
+        <div className="mt-14 lg:mt-20 space-y-8 lg:space-y-12" style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(500px, 100%), 1fr))',
+    gap: '30px',
+  }}>
           {projects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
