@@ -53,7 +53,7 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      showGlass ? 'bg-background/80 backdrop-blur-xl border-b border-white/[0.06]' : 'bg-transparent border-b border-transparent'
+      showGlass ? 'bg-background/80 backdrop-blur-xl border-b border-foreground/[0.06]' : 'bg-transparent border-b border-transparent'
     }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -72,13 +72,13 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
             <button onClick={toggleSound}
-              className="flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 hover:border-accent/40 text-muted hover:text-foreground transition-all duration-300"
+              className="flex items-center gap-2 px-3 py-2 rounded-full border border-foreground/10 hover:border-accent/40 text-muted hover:text-foreground transition-all duration-300"
               aria-label={isPlaying ? 'Mute sound' : 'Play ambient sound'}>
               {isPlaying ? <Volume2 size={16} className="text-accent" /> : <VolumeX size={16} />}
               {isPlaying && <SoundBars bars={bars} />}
             </button>
             <button onClick={toggleTheme}
-              className="p-2.5 rounded-full border border-white/10 hover:border-accent/40 text-muted hover:text-foreground transition-all duration-300"
+              className="p-2.5 rounded-full border border-foreground/10 hover:border-accent/40 text-muted hover:text-foreground transition-all duration-300"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
               {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>

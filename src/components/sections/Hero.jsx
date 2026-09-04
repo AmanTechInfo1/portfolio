@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { profile } from '../../data/profile';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const panels = [
   {
@@ -101,6 +102,9 @@ function Buttons({ type }) {
 }
 
 export default function Hero() {
+
+
+  const { theme } = useTheme();
   const [idx, setIdx] = useState(0);
 
   const p = panels[idx];
@@ -218,7 +222,8 @@ export default function Hero() {
                 className={`w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${
                   idx === i
                     ? 'bg-accent scale-125 shadow-[0_0_8px_rgba(239,35,60,0.6)]'
-                    : 'bg-white/20 hover:bg-white/40'
+                    : theme === 'dark' ? 'bg-white/20 hover:bg-red-700' : 'bg-black/20 hover:bg-red-700'
+                    
                 }`}
               />
             ))}

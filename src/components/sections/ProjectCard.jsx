@@ -43,17 +43,28 @@ export default function ProjectCard({ project, index }) {
       >
         {/* Image area */}
         <div className="relative aspect-[16/9] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#111827] to-[#1a0a0d] flex items-center justify-center">
-            <div className="text-center px-6">
-              <span className="font-mono text-accent text-lg lg:text-2xl font-semibold">
-                {String(project.id).padStart(2, '0')}
-              </span>
-              <div className="mt-4 w-24 h-px bg-accent/40 mx-auto" />
-              <p className="mt-4 font-display text-xl lg:text-3xl font-bold text-foreground/90">
-                {project.name}
-              </p>
-            </div>
-          </div>
+          <div
+  className="
+    absolute inset-0 flex items-center justify-center
+    bg-gradient-to-br
+    from-[#0a0a0a] via-[#111827] to-[#1a0a0d]
+     [html.light_&]:from-[#b6daff]
+    [html.light_&]:via-[#ffffff]
+    [html.light_&]:to-[#ffd4e6]
+  "
+>
+  <div className="text-center px-6">
+    <span className="font-mono text-accent text-lg lg:text-2xl font-semibold">
+      {String(project.id).padStart(2, '0')}
+    </span>
+
+    <div className="mt-4 w-24 h-px bg-accent/40 mx-auto" />
+
+    <p className="mt-4 font-display text-xl lg:text-3xl font-bold text-foreground/90">
+      {project.name}
+    </p>
+  </div>
+</div>
           {/* Hover overlay */}
           <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent transition-opacity duration-500 ${hovered ? 'opacity-100' : 'opacity-0'}`} />
         </div>
@@ -65,7 +76,7 @@ export default function ProjectCard({ project, index }) {
               <span className="font-mono text-xs text-accent uppercase tracking-widest">
                 Project {String(project.id).padStart(2, '0')}
               </span>
-              <h3 className={`mt-2 font-display text-2xl lg:text-3xl font-bold text-foreground transition-transform duration-500 ${hovered ? 'lg:translate-x-1' : ''}`}>
+              <h3 className={`mt-2 font-display text-2xl lg:text-3xl font-bold text-foregrund transition-transform duration-500 ${hovered ? 'lg:translate-x-1' : ''}`}>
                 {project.name}
               </h3>
               <p className="mt-1 text-sm text-muted">{project.category}</p>
