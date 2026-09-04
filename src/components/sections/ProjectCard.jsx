@@ -82,7 +82,16 @@ export default function ProjectCard({ project, index }) {
               <p className="mt-1 text-sm text-muted">{project.category}</p>
             </div>
             <div className={`shrink-0 w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 ${hovered ? 'bg-accent border-accent text-white rotate-45' : 'border-white/15 text-muted'}`}>
-              <ArrowUpRight size={20} />
+               {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+             <ArrowUpRight size={20} />
+               
+              </a>
+            )} 
             </div>
           </div>
 
