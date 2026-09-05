@@ -16,6 +16,14 @@
   color-scheme: dark;
   --vignette-mid: rgba(8, 8, 8, 0.6);
   --vignette-edge: rgba(8, 8, 8, 0.95);
+  /* Accent custom properties (set at runtime by ThemeContext) */
+  --accent: #ef233c;
+  --accent-bright: #ff4056;
+  --accent-dark: #c41e30;
+  --accent-glow: rgba(239, 35, 60, 0.35);
+  --accent-glow-subtle: rgba(239, 35, 60, 0.12);
+  --accent-selection: rgba(239, 35, 60, 0.3);
+  --accent-light-bg: rgba(239, 35, 60, 0.08);
 }
 
 /* Light theme overrides */
@@ -62,13 +70,13 @@ html[data-theme="light"] header button {
 html.light header button:hover:not([aria-label*="Switch"]),
 html[data-theme="light"] header button:hover:not([aria-label*="Switch"]) {
   color: #111111;
-  border-color: rgba(239, 35, 60, 0.5);
+  border-color: var(--accent, rgba(239, 35, 60, 0.5));
 }
 
 /* Light mode: "Let's Talk" CTA link readability */
 html.light header a[href="/contact"],
 html[data-theme="light"] header a[href="/contact"] {
-  border-color: rgba(239, 35, 60, 0.4);
+  border-color: var(--accent, rgba(239, 35, 60, 0.4));
 }
 
 /* Responsive navbar: widen container & scale text on large screens */
@@ -105,7 +113,7 @@ html.light ::-webkit-scrollbar-thumb, html[data-theme="light"] ::-webkit-scrollb
 }
 
 html.light ::-webkit-scrollbar-thumb:hover, html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-  background: #ef233c;
+  background: var(--accent);
 }
 
 html {
@@ -123,7 +131,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(239, 35, 60, 0.3);
+  background-color: var(--accent-selection);
   color: #ffffff;
 }
 
@@ -143,7 +151,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ef233c;
+  background: var(--accent);
 }
 
 /* Custom cursor - desktop only */
@@ -161,14 +169,14 @@ body {
   .cursor-dot {
     width: 6px;
     height: 6px;
-    background-color: #ef233c;
+    background-color: var(--accent);
     z-index: 10001;
   }
 
   .cursor-ring {
     width: 36px;
     height: 36px;
-    border: 1.5px solid rgba(239, 35, 60, 0.5);
+    border: 1.5px solid var(--accent-glow);
     z-index: 10000;
     transition:
       width 0.2s ease,
@@ -180,8 +188,8 @@ body {
   .cursor-ring.is-hovering {
     width: 56px;
     height: 56px;
-    border-color: rgba(239, 35, 60, 0.9);
-    background-color: rgba(239, 35, 60, 0.1);
+    border-color: var(--accent);
+    background-color: var(--accent-light-bg);
   }
 
   body.has-custom-cursor {
@@ -218,11 +226,11 @@ body {
 
 /* Glow effects */
 .glow-accent {
-  box-shadow: 0 0 20px rgba(239, 35, 60, 0.2), 0 0 60px rgba(239, 35, 60, 0.1);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 20%, transparent), 0 0 60px color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
 .text-glow {
-  text-shadow: 0 0 30px rgba(239, 35, 60, 0.3);
+  text-shadow: 0 0 30px var(--accent-glow-subtle);
 }
 
 /* Card shine hover effect */
@@ -264,7 +272,7 @@ body {
 .radial-glow {
   background: radial-gradient(
     circle,
-    rgba(239, 35, 60, 0.07) 0%,
+    var(--accent-glow-subtle) 0%,
     transparent 60%
   );
 }
@@ -287,7 +295,7 @@ body {
   left: 0;
   width: 0;
   height: 1.5px;
-  background-color: #ef233c;
+  background-color: var(--accent);
   transition: width 0.3s ease;
 }
 
@@ -297,7 +305,7 @@ body {
 }
 
 .nav-link.active {
-  color: #ef233c;
+  color: var(--accent);
 }
 
 /* Project tilt transition */

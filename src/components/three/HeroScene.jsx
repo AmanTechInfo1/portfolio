@@ -58,49 +58,34 @@ function useScrollListener() {
 
 /* =========================================================
    THEME COLORS
+   Built dynamically from the selected accent so the 3D
+   scene (core emissive, rings, geometries, lighting and
+   particles) reacts to the theme customizer.
 ========================================================= */
 
-const DARK_THEME = {
-  coreColor: '#0a0a0a',
-  coreEmissive: '#ef233c',
+function buildTheme(isDark, accent) {
+  return {
+    coreColor: isDark ? '#0a0a0a' : '#e7eaf0',
+    coreEmissive: accent.coreEmissive,
 
-  primary: '#ef233c',
-  primaryBright: '#ff4056',
+    primary: accent.primary,
+    primaryBright: accent.primaryBright3d,
 
-  secondary: '#ffffff',
-  secondarySoft: '#d8d8d8',
+    secondary: isDark ? '#ffffff' : '#64748b',
+    secondarySoft: isDark ? '#d8d8d8' : '#94a3b8',
 
-  geometryGray: '#a5a5a5',
+    geometryGray: isDark ? '#a5a5a5' : '#475569',
 
-  particles: '#8f8f8f',
+    particles: isDark ? '#8f8f8f' : '#64748b',
 
-  mainLight: '#ffffff',
-  accentLight: '#ef233c',
+    mainLight: '#ffffff',
+    accentLight: accent.accentLight3d,
 
-  vignette:
-    'radial-gradient(circle at center, transparent 35%, rgba(0,0,0,0.12) 65%, rgba(0,0,0,0.48) 100%)',
-};
-
-const LIGHT_THEME = {
-  coreColor: '#e7eaf0',
-  coreEmissive: '#2563eb',
-
-  primary: '#2563eb',
-  primaryBright: '#3b82f6',
-
-  secondary: '#64748b',
-  secondarySoft: '#94a3b8',
-
-  geometryGray: '#475569',
-
-  particles: '#64748b',
-
-  mainLight: '#ffffff',
-  accentLight: '#2563eb',
-
-  vignette:
-    'radial-gradient(circle at center, transparent 38%, rgba(255,255,255,0.05) 68%, rgba(148,163,184,0.16) 100%)',
-};
+    vignette: isDark
+      ? accent.vignette3d
+      : accent.vignetteLight3d,
+  };
+}
 
 /* =========================================================
    MORPHING CORE
@@ -333,35 +318,35 @@ function FloatingGeometry({ colors, isDark }) {
           pos: [3.5, 1.8, -1.5],
           scale: 0.24,
           geo: 'icosahedron',
-          color: '#ff4056',
+          color: colors.primaryBright,
           opacity: 0.62,
         },
         {
           pos: [-3.2, -1.8, -0.8],
           scale: 0.21,
           geo: 'octahedron',
-          color: '#ffffff',
+          color: colors.secondary,
           opacity: 0.48,
         },
         {
           pos: [2.8, -2.2, 0.8],
           scale: 0.17,
           geo: 'torusKnot',
-          color: '#ff4056',
+          color: colors.primaryBright,
           opacity: 0.58,
         },
         {
           pos: [-2.8, 2.2, -1.2],
           scale: 0.19,
           geo: 'dodecahedron',
-          color: '#b8b8b8',
+          color: colors.geometryGray,
           opacity: 0.42,
         },
         {
           pos: [0.5, 3.5, -2],
           scale: 0.15,
           geo: 'tetrahedron',
-          color: '#ff4056',
+          color: colors.primaryBright,
           opacity: 0.52,
         },
       ]
@@ -370,35 +355,35 @@ function FloatingGeometry({ colors, isDark }) {
           pos: [3.5, 1.8, -1.5],
           scale: 0.24,
           geo: 'icosahedron',
-          color: '#2563eb',
+          color: colors.primaryBright,
           opacity: 0.48,
         },
         {
           pos: [-3.2, -1.8, -0.8],
           scale: 0.21,
           geo: 'octahedron',
-          color: '#475569',
+          color: colors.secondarySoft,
           opacity: 0.38,
         },
         {
           pos: [2.8, -2.2, 0.8],
           scale: 0.17,
           geo: 'torusKnot',
-          color: '#0891b2',
+          color: colors.primaryBright,
           opacity: 0.44,
         },
         {
           pos: [-2.8, 2.2, -1.2],
           scale: 0.19,
           geo: 'dodecahedron',
-          color: '#64748b',
+          color: colors.geometryGray,
           opacity: 0.34,
         },
         {
           pos: [0.5, 3.5, -2],
           scale: 0.15,
           geo: 'tetrahedron',
-          color: '#3b82f6',
+          color: colors.primaryBright,
           opacity: 0.42,
         },
       ];
@@ -561,26 +546,15 @@ function ParticleField({
 
 function SceneContent({
   theme,
+  colors,
 }) {
   const isDark = theme === 'dark';
 
-  const colors = isDark
-    ? DARK_THEME
-    : LIGHT_THEME;
-
   return (
     <>
-      {/* ---------------------------------------------
-          Ambient Light
-      --------------------------------------------- */}
-
       <ambientLight
         intensity={isDark ? 0.15 : 0.55}
       />
-
-      {/* ---------------------------------------------
-          Main White Light
-      --------------------------------------------- */}
 
       <pointLight
         position={[5, 5, 5]}
@@ -588,19 +562,11 @@ function SceneContent({
         color={colors.mainLight}
       />
 
-      {/* ---------------------------------------------
-          Theme Accent Light
-      --------------------------------------------- */}
-
       <pointLight
         position={[-5, -3, 2]}
         intensity={isDark ? 0.4 : 0.65}
         color={colors.accentLight}
       />
-
-      {/* ---------------------------------------------
-          Additional Fill Light
-      --------------------------------------------- */}
 
       <pointLight
         position={[0, -5, -3]}
@@ -609,24 +575,18 @@ function SceneContent({
       />
 
       <Suspense fallback={null}>
-        {/* Main futuristic core */}
-        <MorphCore
-          colors={colors}
-        />
+        <MorphCore colors={colors} />
 
-        {/* Orbital rings */}
         <OrbitalRings
           colors={colors}
           isDark={isDark}
         />
 
-        {/* Floating wireframe geometries */}
         <FloatingGeometry
           colors={colors}
           isDark={isDark}
         />
 
-        {/* Background particles */}
         <ParticleField
           count={1200}
           colors={colors}
@@ -650,23 +610,23 @@ export default function HeroScene() {
     that your Navbar toggle changes.
   */
 
-  const { theme } = useTheme();
+  const { theme, accent, threeDEffects } = useTheme();
 
   useScrollListener();
 
   /*
-    Respect user's reduced motion preference.
+    Respect user's reduced motion preference,
+    the 3D effects toggle, and keep the canvas
+    hidden when no effects are wanted.
   */
 
-  if (reducedMotion) {
+  if (reducedMotion || !threeDEffects) {
     return null;
   }
 
   const isDark = theme === 'dark';
 
-  const colors = isDark
-    ? DARK_THEME
-    : LIGHT_THEME;
+  const colors = buildTheme(isDark, accent);
 
   return (
     <div
@@ -694,8 +654,9 @@ export default function HeroScene() {
         }}
       >
         <SceneContent
-          theme={theme}
-        />
+  theme={theme}
+  colors={colors}
+/>
       </Canvas>
 
       {/* ---------------------------------------------

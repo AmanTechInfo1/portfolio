@@ -161,7 +161,7 @@ export default function Hero() {
                     className="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-foreground leading-[1.05]"
                   >
                     {p.t1}{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#ff4d6d] to-accent">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[var(--accent-bright)] to-accent">
                       {p.t2}
                     </span>
                   </motion.h1>
@@ -221,8 +221,8 @@ export default function Hero() {
                 aria-current={idx === i ? 'true' : 'false'}
                 className={`w-2 h-2 rounded-full transition-all duration-500 cursor-pointer ${
                   idx === i
-                    ? 'bg-accent scale-125 shadow-[0_0_8px_rgba(239,35,60,0.6)]'
-                    : theme === 'dark' ? 'bg-white/20 hover:bg-red-700' : 'bg-black/20 hover:bg-red-700'
+                    ? 'bg-accent scale-125 shadow-[0_0_8px_var(--accent-glow)]'
+                    : theme === 'dark' ? 'bg-white/20 hover:bg-accent' : 'bg-black/20 hover:bg-accent'
                     
                 }`}
               />

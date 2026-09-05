@@ -4,6 +4,8 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CustomCursor from './components/layout/CustomCursor';
 import LoadingScreen from './components/layout/LoadingScreen';
+import AIAssistant from './components/ai/AIAssistant';
+import ThemeCustomizer from './components/ui/ThemeCustomizer';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 class ErrorBoundary extends Component {
@@ -32,15 +34,15 @@ class ErrorBoundary extends Component {
         <div
           style={{
             padding: '2rem',
-            color: 'white',
-            background: '#080808',
+            color: 'var(--foreground, white)',
+            background: 'var(--background, #080808)',
             minHeight: '100vh',
             fontFamily: 'monospace',
           }}
         >
           <h1
             style={{
-              color: '#ef233c',
+              color: 'var(--accent, #ef233c)',
               fontSize: '1.5rem',
             }}
           >
@@ -141,6 +143,9 @@ function App() {
         </main>
 
         <Footer />
+
+        <AIAssistant />
+        <ThemeCustomizer />
       </ErrorBoundary>
     </ThemeProvider>
   );

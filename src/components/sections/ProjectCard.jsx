@@ -37,7 +37,7 @@ export default function ProjectCard({ project, index }) {
         onMouseLeave={handleMouseLeave}
         className={`project-tilt card-shine rounded-3xl border overflow-hidden ${
           hovered
-            ? 'border-accent/40 bg-surface-light shadow-[0_0_60px_rgba(239,35,60,0.15)]'
+            ? 'border-accent/40 bg-surface-light shadow-[0_0_60px_var(--accent-glow-subtle)]'
             : 'border-white/[0.07] bg-surface'
         } transition-all duration-500`}
       >
