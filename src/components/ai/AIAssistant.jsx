@@ -172,7 +172,7 @@ export default function AIAssistant() {
             transition={{ duration: reducedMotion ? 0 : 0.32, ease: [0.25, 0.46, 0.45, 0.94] }}
             role="dialog"
             aria-label="AI portfolio assistant chat"
-            className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24 w-auto sm:w-[400px] z-[60]"
+            className="fixed bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-15 w-auto sm:w-[400px] z-[60]"
           >
             <div className="relative overflow-hidden rounded-3xl border border-foreground/[0.1] bg-background/90 backdrop-blur-2xl shadow-2xl">
               {/* Top glow */}

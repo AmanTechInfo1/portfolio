@@ -172,7 +172,7 @@ export default function ThemeCustomizer() {
                 </fieldset>
 
                 {/* 3D effects */}
-                <fieldset>
+                {/* <fieldset>
                   <legend className="text-[11px] uppercase tracking-wider font-mono text-muted mb-2.5">3D Effects</legend>
                   <button
                     type="button"
@@ -201,7 +201,7 @@ export default function ThemeCustomizer() {
                       />
                     </span>
                   </button>
-                </fieldset>
+                </fieldset> */}
 
                 {/* Animation intensity */}
                 <fieldset>

@@ -156,7 +156,7 @@ export const projects = [
     "Responsive website design and LMS user experience",
   ],
   role: "WordPress Developer",
-  duration: "Add Project Duration",
+  duration: "4 months, 2026",
   liveUrl: "https://innovativedrivingeducationacademy.co.uk",
   githubUrl: "",
   challenges: [
@@ -216,7 +216,7 @@ export const projects = [
     "Custom frontend design tailored to the Luxe Cards brand",
   ],
   role: "WordPress Developer",
-  duration: "Add Project Duration",
+  duration: "4 months, 2024",
   liveUrl: "https://luxe-cards.co.uk/",
   githubUrl: "",
   challenges: [

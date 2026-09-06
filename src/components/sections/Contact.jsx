@@ -179,7 +179,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 lg:py-40 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute inset-0 radial-glow pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" aria-hidden="true" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
